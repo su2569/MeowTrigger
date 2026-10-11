@@ -1,0 +1,47 @@
+# ===== Python =====
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+.eggs/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# ===== 虚拟环境 =====
+venv/
+.venv/
+env/
+ENV/
+_venv_old/
+
+# ===== 沙箱临时文件（executor 每次执行脚本会生成）=====
+tmp*.py
+tmp*.js
+tmp*.txt
+
+# ===== 运行时产物 =====
+logs/
+*.log
+*.bak
+
+# ===== 用户配置（含 access_token / admin_users，不提交）=====
+config/config.json
+
+# ===== 群专属触发器（可能含群号等敏感信息，按需决定）=====
+# plugins/[0-9]*/group_triggers.json
+
+# ===== IDE =====
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# ===== OS =====
+.DS_Store
+Thumbs.db
+desktop.ini

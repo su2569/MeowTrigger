@@ -1,0 +1,77 @@
+{
+  "ws_url": "ws://127.0.0.1:3001",
+  "access_token": "",
+  "reconnect_interval": 5,
+  "reload_interval": 60,
+  "command_prefix": "/mt",
+  "default_permission": "all",
+  "default_cooldown": 0,
+  "script_timeout": 300,
+  "allow_system_cmd": false,
+  "system_cmd_whitelist": [],
+  "admin_users": [],
+  "script_paths": [],
+  "log_level": "info",
+  "log_forward_level": "error",
+  "log_target_group": "",
+  "send_log_to_group": false,
+  "anti_spam_enabled": true,
+  "anti_spam_window": 30,
+  "anti_spam_count": 3,
+  "plugins_dir": "plugins",
+  "sandbox_type": "auto",
+  "venv_path": "",
+  "custom_python": "",
+  "custom_node": "",
+  "execution_mode": "local",
+  "message_parse_mode": "auto",
+
+  "sandbox": {
+    "enabled": true,
+    "hook_enabled": true,
+    "block_private_attrs": true,
+    "max_audit_log": 200,
+  
+    "module_whitelist": [],
+  
+    "module_blacklist": [
+      "subprocess", "socket", "ssl", "shutil", "ctypes", "importlib",
+      "pickle", "yaml", "marshal", "shelve", "dbm",
+      "urllib", "http", "requests", "ftplib", "smtplib", "telnetlib", "xmlrpc",
+      "multiprocessing", "winreg",
+      "antigravity", "this"
+    ],
+  
+   "forbidden_builtins": [
+      "eval", "exec", "compile", "open", "input",
+      "breakpoint", "exit", "quit", "help",
+      "globals", "locals", "vars", "dir",
+      "memoryview", "bytearray"
+    ],
+  
+    "forbidden_attrs": {
+      "os": [
+        "system", "popen", "spawn*", "exec*",
+        "remove", "unlink", "rmdir", "removedirs", "rename", "renames",
+        "kill*", "fork", "forkpty", "abort",
+        "chmod", "chown", "fchmod", "fchown",
+        "putenv", "unsetenv", "startfile",
+        "execl*", "execv*"
+      ],
+      "sys": [
+        "exit", "settrace", "setprofile",
+        "_getframe", "addaudithook", "audit",
+        "set_coroutine_origin_tracking_depth",
+        "set_asyncgen_hooks", "setprofile", "settrace"
+      ],
+      "subprocess": ["*"],
+      "socket": ["*"],
+      "shutil": ["*"],
+      "ctypes": ["*"],
+      "importlib": ["*"],
+      "pickle": ["*"],
+      "yaml": ["*"],
+      "marshal": ["*"]
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "plugin_name": "示例插件",
+  "author": "MeowTrigger",
+  "description": "演示各类触发器和响应",
+  "triggers": [
+    {
+      "name": "问候",
+      "trigger_type": "keyword",
+      "trigger_pattern": "你好",
+      "response_type": "text",
+      "response_content": "你好呀 {user_name}！现在是 {time}",
+      "permission": "all",
+      "cooldown": 3
+    },
+    {
+      "name": "签到",
+      "trigger_type": "command",
+      "trigger_pattern": "签到",
+      "response_type": "script",
+      "response_content": "import datetime\noutput = f'签到成功！{datetime.datetime.now().strftime(\"%Y-%m-%d %H:%M:%S\")}'",
+      "script_type": "inline",
+      "permission": "all",
+      "cooldown": 60
+    }
+  ]
+}
