@@ -44,4 +44,4 @@ config/config.json
 # ===== OS =====
 .DS_Store
 Thumbs.db
-desktop.ini
+desktop.inifix_import.py 
