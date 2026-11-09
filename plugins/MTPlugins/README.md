@@ -34,3 +34,9 @@
 
 - `onebot:GroupMessage:*` → 所有群
 - `*:*:*` → 全部（等价于不限制）
+
+`platform` 与 `message_type` 都按「族」宽松匹配，写哪个同义写法都能命中：
+
+- `onebot` / `aiocqhttp` / `napcat` / `lagrange` / `go-cqhttp` 视为同一族
+- 私聊：`PrivateMessage` / `FriendMessage` / `private` 视为同一族
+- 但群号、用户号（session_id）必须精确一致，不会串会话

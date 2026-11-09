@@ -138,7 +138,7 @@ class UMO:
             return False
         target = parse_umo(other) if not isinstance(other, UMO) else other
         return (platform_match(self.platform, target.platform)
-                and umo_segment_match(self.message_type, target.message_type)
+                and message_type_match(self.message_type, target.message_type)
                 and umo_segment_match(self.session_id, target.session_id))
 
 
@@ -152,6 +152,33 @@ def umo_segment_match(pattern: str, value: str) -> bool:
     if p == WILDCARD or p == "":
         return True
     return p.lower() == v.lower()
+
+
+# 同一个语义常有好几个写法：OneBot 的 PrivateMessage / AstrBot 的 FriendMessage
+# 都是「私聊」，配置里写哪个都该匹配得上，所以按族比较
+_MESSAGE_FAMILY = {
+    "groupmessage": "group", "group": "group",
+    "guildmessage": "guild", "guild": "guild",
+    "friendmessage": "private", "privatemessage": "private",
+    "private": "private", "friend": "private", "user": "private",
+    "tempmessage": "temp", "temp": "temp",
+    "directmessage": "direct", "direct": "direct",
+}
+
+
+def message_family(message_type: str) -> str:
+    key = str(message_type or "").strip().lower().replace("_", "").replace(" ", "")
+    return _MESSAGE_FAMILY.get(key, key)
+
+
+def message_type_match(pattern: str, value: str) -> bool:
+    """message_type 按「族」比较：私聊/群聊/临时会话……写法不同也算同一类"""
+    p = str(pattern or WILDCARD)
+    if p == WILDCARD or p == "":
+        return True
+    if umo_segment_match(p, value):
+        return True
+    return message_family(p) == message_family(value)
 
 
 # 同一个平台常有好几个名字（OneBot 系尤其明显），配置里写哪个都能匹配上
