@@ -44,4 +44,7 @@ config/config.json
 # ===== OS =====
 .DS_Store
 Thumbs.db
-desktop.inifix_import.py 
+desktop.ini
+
+# ===== 本地杂项 =====
+fix_import.py

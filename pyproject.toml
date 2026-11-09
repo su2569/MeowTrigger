@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "meowtrigger"
+version = "1.1.0"
+description = "自定义触发器引擎：可独立运行，也可作为包嵌入 ElyBot 等程序"
+readme = "README.md"
+requires-python = ">=3.8"
+license = { text = "MIT" }
+authors = [{ name = "su2569" }]
+keywords = ["onebot", "qqbot", "trigger", "chatbot", "elybot"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+]
+dependencies = ["websockets>=10.0"]
+
+[project.optional-dependencies]
+cron = ["croniter>=1.0"]
+dev = ["pytest>=7.0"]
+
+[project.urls]
+Homepage = "https://github.com/su2569/MeowTrigger"
+
+[project.scripts]
+meowtrigger = "meowtrigger.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["meowtrigger*"]
+
+[tool.setuptools.package-data]
+meowtrigger = ["**/*.json"]

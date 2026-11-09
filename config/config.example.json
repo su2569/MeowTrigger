@@ -18,7 +18,12 @@
   "anti_spam_enabled": true,
   "anti_spam_window": 30,
   "anti_spam_count": 3,
+
+  "platform": "onebot",
   "plugins_dir": "plugins",
+  "mt_plugins_dir": "plugins/MTPlugins",
+  "require_umo": true,
+
   "sandbox_type": "auto",
   "venv_path": "",
   "custom_python": "",
@@ -31,9 +36,9 @@
     "hook_enabled": true,
     "block_private_attrs": true,
     "max_audit_log": 200,
-  
+
     "module_whitelist": [],
-  
+
     "module_blacklist": [
       "subprocess", "socket", "ssl", "shutil", "ctypes", "importlib",
       "pickle", "yaml", "marshal", "shelve", "dbm",
@@ -41,14 +46,14 @@
       "multiprocessing", "winreg",
       "antigravity", "this"
     ],
-  
-   "forbidden_builtins": [
+
+    "forbidden_builtins": [
       "eval", "exec", "compile", "open", "input",
       "breakpoint", "exit", "quit", "help",
       "globals", "locals", "vars", "dir",
       "memoryview", "bytearray"
     ],
-  
+
     "forbidden_attrs": {
       "os": [
         "system", "popen", "spawn*", "exec*",

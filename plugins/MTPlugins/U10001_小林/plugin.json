@@ -1,0 +1,16 @@
+{
+  "plugin_name": "小林专属",
+  "description": "只对用户 10001 生效的触发器示例",
+  "umo": "onebot:PrivateMessage:10001",
+  "triggers": [
+    {
+      "name": "私人问候",
+      "trigger_type": "keyword",
+      "trigger_pattern": "在吗",
+      "response_type": "text",
+      "response_content": "在的在的，{user_name} 找我，我怎么会不在呢♪",
+      "permission": "all",
+      "cooldown": 10
+    }
+  ]
+}

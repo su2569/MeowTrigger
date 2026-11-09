@@ -1,0 +1,16 @@
+{
+  "plugin_name": "全群播报",
+  "description": "umo 里用 * 表示所有群；单文件插件同样必须有 umo",
+  "umo": "onebot:GroupMessage:*",
+  "triggers": [
+    {
+      "name": "整点提醒",
+      "trigger_type": "fullmatch",
+      "trigger_pattern": "几点了",
+      "response_type": "text",
+      "response_content": "现在是 {time} 喵~",
+      "permission": "all",
+      "cooldown": 2
+    }
+  ]
+}

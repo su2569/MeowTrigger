@@ -1,0 +1,26 @@
+{
+  "plugin_name": "夜猫子群专属",
+  "description": "只在 123456789 这个群里生效的触发器示例",
+  "umo": "onebot:GroupMessage:123456789",
+  "triggers": [
+    {
+      "name": "群晚安",
+      "trigger_type": "fullmatch",
+      "trigger_pattern": "晚安",
+      "response_type": "text",
+      "response_content": "晚安 {user_name}，这里的灯我替你留着♪",
+      "permission": "all",
+      "cooldown": 5,
+      "description": "群里说「晚安」时的专属回应"
+    },
+    {
+      "name": "群规",
+      "trigger_type": "command",
+      "trigger_pattern": "群规",
+      "response_type": "text",
+      "response_content": "本群三条：不吵架、不刷屏、有事说事。",
+      "permission": "all",
+      "cooldown": 3
+    }
+  ]
+}

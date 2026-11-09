@@ -108,12 +108,27 @@ class EventHandler:
 
     def get_effective_triggers(self, event, main_triggers, group_cache) -> List[Dict]:
         gid = self.get_group_id(event)
+        uid = self.get_sender_id(event)
+        umo = getattr(event, "umo", "") or ""
+
         gt = group_cache.get(gid, [])
         if not gt and gid:
             gt = self.config_loader.load_group(gid, "all", 0)
             group_cache[gid] = gt
+
+        ut: List[Dict] = []
+        if uid:
+            ut = self.config_loader.user_cache.get(str(uid), [])
+
+        if umo:
+            hits = getattr(self.config_loader, "trigger_hits", None)
+            if hits:
+                gt = [t for t in gt if hits(t, umo)]
+                ut = [t for t in ut if hits(t, umo)]
+
         filtered = [t for t in main_triggers if self.check_group_access(t, gid)]
-        return (gt + filtered) if gt else filtered
+        # 会话级（用户 → 群）优先，其次全局
+        return (ut + gt + filtered) if (gt or ut) else filtered
 
     def check_trigger_match(self, trigger: Dict, message: str) -> Tuple[bool, Optional[str], str]:
         ttype = trigger.get("trigger_type", "keyword")
